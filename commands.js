@@ -46,10 +46,18 @@ function ls(){
 
 }
 
+function echo(string){
+  // process.stdout.write('prompt > ');
+  // const date = new Date(); //don't do date.now()
+  // remove the newline
+    process.stdout.write(string);
+}
+
 module.exports = {
   pwd: pwd,
   date: date,
-  ls: ls
+  ls: ls,
+  echo: echo
 }
 
 // commands();
