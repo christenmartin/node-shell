@@ -7,11 +7,24 @@
 
 process.stdout.write('prompt > ');
 
+
+const date = new Date(); //don't do date.now()
+// console.log("HERE IS OUR DATE", date.toString()); 
+
 process.stdin.on('data', function (data) {
-    console.log("WE ARE HERE: ", process.argv); 
-    // var cmd = data.toString().trim(); // remove the newline
+    // process.stdout.write(process.argv); 
+    var cmd = data.toString().trim(); // remove the newline
+    if (cmd === "pwd") {
+        process.stdout.write(process.argv[1]);
+    } else if (cmd === "date") {
+        process.stdout.write(date.toString()); 
+    }
   
-    // process.stdout.write('You typed: ' + cmd);
-    // process.stdout.write('\nprompt > ');
+   
+    process.stdout.write('\nprompt > ');
   
   });
+
+
+
+// https://stackoverflow.com/questions/31089749/how-do-you-set-a-strftime-with-javascript
