@@ -21,21 +21,21 @@ var fs = require('fs');
 
 // commands();
 
-function pwd(){
+function pwd(args){
   // process.stdout.write('prompt > ');
   // process.stdin.on('data', function (data) {
   //   var cmd = data.toString().trim(); // remove the newline
     process.stdout.write(process.argv[1]);
 }
 
-function date(){
+function date(arg){
   // process.stdout.write('prompt > ');
   const date = new Date(); //don't do date.now()
   // remove the newline
     process.stdout.write(date.toString());
 }
 
-function ls(){
+function ls(arg){
   fs.readdir('.', function(err, files) {
   if (err) throw err;
   files.forEach(function(file) {
@@ -43,7 +43,23 @@ function ls(){
     //gives us a souble prompt and no prompt at end, why?
   })
 });
+}
 
+function cat(arg){
+  //console.log("arg: ", arg);
+  var file = "./" + arg;
+  fs.readFile(file, (err, data) => {
+  if (err) throw err;
+  process.stdout.write(data.toString());
+});
+}
+
+
+function head(arg){
+  fs.readFile(arg, (err, data) => {
+  if (err) throw err;
+  process.stdout.write(data.toString());
+});
 }
 
 function echo(string){
@@ -53,11 +69,15 @@ function echo(string){
     process.stdout.write(string);
 }
 
+//https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback
+
 module.exports = {
   pwd: pwd,
   date: date,
   ls: ls,
-  echo: echo
+  echo: echo,
+  cat: cat,
+  head: head
 }
 
 // commands();

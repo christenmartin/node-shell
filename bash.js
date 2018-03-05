@@ -11,9 +11,19 @@
 var commands = require('./commands');
 process.stdout.write('prompt > ');
 process.stdin.on('data', function (data) {
-    var cmd = data.toString().trim().split(" ")[0]; // remove
-    console.log(cmd);
-    commands[cmd]();
+  console.log(data);
+  //prints <Buffer 61 73 64 68 6b 6a 0a>
+    var cmd = data.toString().trim().split(" "); // remove
+    console.log("CMD:", cmd);
+    var command = cmd[0];
+    console.log("command: ", command)
+    if (cmd[1]){
+      var args = cmd.slice(1).join(" ");
+      console.log("args: ", args);
+    }
+    // console.log(cmd);
+    console.log("commands: ", commands);
+    commands[command](args);
     process.stdout.write('\nprompt > ');
   });
 
