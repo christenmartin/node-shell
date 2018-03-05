@@ -16,6 +16,7 @@ process.stdin.on('data', function (data) {
     process.stdout.write('\nprompt > ');
   });
 
+
 // userCommand();
 
 
@@ -26,6 +27,7 @@ process.stdin.on('data', function (data) {
 // https://stackoverflow.com/questions/31089749/how-do-you-set-a-strftime-with-javascript
 
 var startTime = new Date;
+  console.log("blah blah");
 
 setTimeout(function () {
   var endTime = new Date;
@@ -35,3 +37,6 @@ setTimeout(function () {
 }, 500);
 
 while (new Date - startTime < 1000) {};
+// https://stackoverflow.com/questions/31089749/how-do-you-set-a-strftime-with-javascript
+// http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-4.html           cat bash.js | head
+
