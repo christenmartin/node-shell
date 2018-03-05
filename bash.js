@@ -1,30 +1,37 @@
-// console.log("my_prompt: "); 
+// console.log("my_prompt: ");
 // console.log(Object.keys(process));
 
-//STDIN is data flowing in 
-//STDOUT is ata flowing out 
+//STDIN is data flowing in
+//STDOUT is ata flowing out
 
 
+// var pwd = require('./commands').pwd;
+// var date = require('./commands').date;
+
+var commands = require('./commands');
 process.stdout.write('prompt > ');
-
-
-const date = new Date(); //don't do date.now()
-// console.log("HERE IS OUR DATE", date.toString()); 
-
 process.stdin.on('data', function (data) {
-    // process.stdout.write(process.argv); 
-    var cmd = data.toString().trim(); // remove the newline
-    if (cmd === "pwd") {
-        process.stdout.write(process.argv[1]);
-    } else if (cmd === "date") {
-        process.stdout.write(date.toString()); 
-    }
-  
-   
+    var cmd = data.toString().trim(); // remove
+    commands[cmd]();
     process.stdout.write('\nprompt > ');
-  
   });
 
+// userCommand();
+
+
+
+// commands.commands();
 
 
 // https://stackoverflow.com/questions/31089749/how-do-you-set-a-strftime-with-javascript
+
+var startTime = new Date;
+
+setTimeout(function () {
+  var endTime = new Date;
+  console.log(startTime);
+  console.log(endTime);
+  console.log('Time elapsed: ', endTime - startTime, 'ms');
+}, 500);
+
+while (new Date - startTime < 1000) {};
