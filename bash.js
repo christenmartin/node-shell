@@ -2,7 +2,7 @@
 // console.log(Object.keys(process));
 
 //STDIN is data flowing in 
-//STDOUT is ata flowing out 
+//STDOUT is data flowing out 
 
 
 process.stdout.write('prompt > ');
@@ -25,6 +25,9 @@ process.stdin.on('data', function (data) {
   
   });
 
+  console.log("blah blah"); 
 
 
 // https://stackoverflow.com/questions/31089749/how-do-you-set-a-strftime-with-javascript
+// http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-4.html           cat bash.js | head 
+
